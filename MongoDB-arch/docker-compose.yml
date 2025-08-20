@@ -1,0 +1,144 @@
+version: "3.8"
+
+services:
+  # Config Server Replica Set (cfgRS)
+  configsvr1:
+    image: mongo:7.0 # Pinned version for stability
+    container_name: configsvr1
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped # Auto-restart on failure
+
+  configsvr2:
+    image: mongo:7.0
+    container_name: configsvr2
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  configsvr3:
+    image: mongo:7.0
+    container_name: configsvr3
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  # Shard 1 Replica Set (shard1RS)
+  shard1a:
+    image: mongo:7.0
+    container_name: shard1a
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard1b:
+    image: mongo:7.0
+    container_name: shard1b
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard1c:
+    image: mongo:7.0
+    container_name: shard1c
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  # Shard 2 Replica Set (shard2RS)
+  shard2a:
+    image: mongo:7.0
+    container_name: shard2a
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard2b:
+    image: mongo:7.0
+    container_name: shard2b
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard2c:
+    image: mongo:7.0
+    container_name: shard2c
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  # Shard 3 Replica Set (shard3RS)
+  shard3a:
+    image: mongo:7.0
+    container_name: shard3a
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard3b:
+    image: mongo:7.0
+    container_name: shard3b
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  shard3c:
+    image: mongo:7.0
+    container_name: shard3c
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  # Mongos Query Routers
+  mongos1:
+    image: mongo:7.0
+    container_name: mongos1
+    depends_on:
+      - configsvr1
+      - configsvr2
+      - configsvr3
+    command: >
+      bash -c "
+        echo 'Waiting for config servers to be ready...';
+        sleep 15;
+        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27017
+      "
+    ports:
+      - "27017:27017" # Primary client connection port
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+  mongos2:
+    image: mongo:7.0
+    container_name: mongos2
+    depends_on:
+      - configsvr1
+      - configsvr2
+      - configsvr3
+    command: >
+      bash -c "
+        sleep 15;
+        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27018
+      "
+    ports:
+      - "27018:27018" # Additional port for load balancing or HA
+    networks:
+      - mongo_net
+    restart: unless-stopped
+
+networks:
+  mongo_net:
+    driver: bridge

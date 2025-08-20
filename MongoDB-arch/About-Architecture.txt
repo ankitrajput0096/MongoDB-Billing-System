@@ -1,0 +1,29 @@
+Data Flow Explanation
+Client Request: Applications connect to any mongos instance (port 27017 or 27018)
+
+Query Routing: Mongos:
+
+Checks with config servers to determine which shard contains the requested data
+
+Routes the query to the appropriate shard(s)
+
+Aggregates results from multiple shards if needed
+
+Config Servers: Store:
+
+Metadata about the cluster
+
+Chunk distribution across shards
+
+Database and collection sharding configuration
+
+Shard Processing: Each shard:
+
+Processes queries for its portion of the data
+
+Maintains data consistency within its replica set
+
+Replicates data across its members for high availability
+
+Response Return: Mongos receives results from shards and returns them to the client
+
