@@ -335,4 +335,10 @@ docker-compose down -v
 
 ---
 
-This complete setup provides a production-ready MongoDB sharded cluster that can be easily deployed and managed. The scripts automate the initialization process, making it easy to recreate the cluster as needed.
+### To Connect with MongoDB Database
+Use MongoDB Compass
+Download this tool from this URL: https://www.mongodb.com/products/tools/compass
+
+and once installed
+Configure this MongoDB database like this in MongoDB Compass:
+![Demo](MongoDB-arch/Screenshot%202025-08-20%20at%205.15.28 PM.png)
