@@ -3,17 +3,23 @@ version: "3.8"
 services:
   # Config Server Replica Set (cfgRS)
   configsvr1:
-    image: mongo:7.0 # Pinned version for stability
+    image: mongo:7.0
     container_name: configsvr1
-    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - config1_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
-    restart: unless-stopped # Auto-restart on failure
+    restart: unless-stopped
 
   configsvr2:
     image: mongo:7.0
     container_name: configsvr2
-    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - config2_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -21,7 +27,10 @@ services:
   configsvr3:
     image: mongo:7.0
     container_name: configsvr3
-    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all
+    command: mongod --configsvr --replSet cfgRS --port 27019 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - config3_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -30,7 +39,10 @@ services:
   shard1a:
     image: mongo:7.0
     container_name: shard1a
-    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard1a_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -38,7 +50,10 @@ services:
   shard1b:
     image: mongo:7.0
     container_name: shard1b
-    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard1b_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -46,7 +61,10 @@ services:
   shard1c:
     image: mongo:7.0
     container_name: shard1c
-    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard1c_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -55,7 +73,10 @@ services:
   shard2a:
     image: mongo:7.0
     container_name: shard2a
-    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard2a_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -63,7 +84,10 @@ services:
   shard2b:
     image: mongo:7.0
     container_name: shard2b
-    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard2b_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -71,7 +95,10 @@ services:
   shard2c:
     image: mongo:7.0
     container_name: shard2c
-    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard2RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard2c_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -80,7 +107,10 @@ services:
   shard3a:
     image: mongo:7.0
     container_name: shard3a
-    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard3a_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -88,7 +118,10 @@ services:
   shard3b:
     image: mongo:7.0
     container_name: shard3b
-    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard3b_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -96,7 +129,10 @@ services:
   shard3c:
     image: mongo:7.0
     container_name: shard3c
-    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all
+    command: mongod --shardsvr --replSet shard3RS --port 27018 --bind_ip_all --keyFile /opt/keyfile
+    volumes:
+      - shard3c_data:/data/db
+      - ./mongodb-keyfile:/opt/keyfile:ro
     networks:
       - mongo_net
     restart: unless-stopped
@@ -113,10 +149,12 @@ services:
       bash -c "
         echo 'Waiting for config servers to be ready...';
         sleep 15;
-        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27017
+        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27017 --keyFile /opt/keyfile
       "
+    volumes:
+      - ./mongodb-keyfile:/opt/keyfile:ro
     ports:
-      - "27017:27017" # Primary client connection port
+      - "27017:27017"
     networks:
       - mongo_net
     restart: unless-stopped
@@ -131,13 +169,29 @@ services:
     command: >
       bash -c "
         sleep 15;
-        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27018
+        mongos --configdb cfgRS/configsvr1:27019,configsvr2:27019,configsvr3:27019 --bind_ip_all --port 27018 --keyFile /opt/keyfile
       "
+    volumes:
+      - ./mongodb-keyfile:/opt/keyfile:ro
     ports:
-      - "27018:27018" # Additional port for load balancing or HA
+      - "27018:27018"
     networks:
       - mongo_net
     restart: unless-stopped
+
+volumes:
+  config1_data:
+  config2_data:
+  config3_data:
+  shard1a_data:
+  shard1b_data:
+  shard1c_data:
+  shard2a_data:
+  shard2b_data:
+  shard2c_data:
+  shard3a_data:
+  shard3b_data:
+  shard3c_data:
 
 networks:
   mongo_net:

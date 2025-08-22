@@ -130,24 +130,147 @@ ankitrajput@Ankits-MacBook-Pro MongoDB-arch % ./setup-cluster.sh
 MongoDB Sharded Cluster Setup
 =============================
 ========Sit Back and Relax===
+Keyfile already exists, skipping generation...
 Phase 1: Starting containers...
 WARN[0000] /Users/ankitrajput/Desktop/MongoDB Billing/MongoDB-Billing-System/MongoDB-arch/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion 
-[+] Running 15/15
- ✔ Network mongodb-arch_mongo_net  Created                                                                                                                          0.1s 
- ✔ Container shard3c               Started                                                                                                                          0.4s 
- ✔ Container configsvr2            Started                                                                                                                          0.2s 
- ✔ Container shard3a               Started                                                                                                                          0.3s 
- ✔ Container configsvr3            Started                                                                                                                          0.3s 
- ✔ Container configsvr1            Started                                                                                                                          0.3s 
- ✔ Container shard1c               Started                                                                                                                          0.2s 
- ✔ Container shard2c               Started                                                                                                                          0.3s 
- ✔ Container shard3b               Started                                                                                                                          0.4s 
- ✔ Container shard1b               Started                                                                                                                          0.4s 
- ✔ Container shard1a               Started                                                                                                                          0.4s 
- ✔ Container shard2b               Started                                                                                                                          0.3s 
- ✔ Container shard2a               Started                                                                                                                          0.2s 
- ✔ Container mongos1               Started                                                                                                                          0.4s 
- ✔ Container mongos2               Started                                                                                                                          0.4s 
+[+] Running 15/25
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+[+] Running 15/27d1c                   Creating                                                                                                                            0.1s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ⠙ Container shard1c                   Starting                                                                                                                            0.2s 
+ ⠙ Container shard3c                   Starting                                                                                                                            0.2s 
+[+] Running 15/27igsvr3                Starting                                                                                                                            0.2s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ⠹ Container shard1c                   Starting                                                                                                                            0.3s 
+ ⠹ Container shard3c                   Starting                                                                                                                            0.3s 
+[+] Running 15/27igsvr3                Starting                                                                                                                            0.3s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ⠸ Container shard1c                   Starting                                                                                                                            0.4s 
+ ⠸ Container shard3c                   Starting                                                                                                                            0.4s 
+[+] Running 17/27igsvr3                Starting                                                                                                                            0.4s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ✔ Container shard1c                   Started                                                                                                                             0.4s 
+ ⠼ Container shard3c                   Starting                                                                                                                            0.5s 
+[+] Running 25/27igsvr3                Starting                                                                                                                            0.5s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ✔ Container shard1c                   Started                                                                                                                             0.4s 
+ ✔ Container shard3c                   Started                                                                                                                             0.5s 
+[+] Running 25/27igsvr3                Started                                                                                                                             0.5s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ✔ Container shard1c                   Started                                                                                                                             0.4s 
+ ✔ Container shard3c                   Started                                                                                                                             0.5s 
+[+] Running 27/27igsvr3                Started                                                                                                                             0.5s 
+ ✔ Network mongodb-arch_mongo_net      Created                                                                                                                             0.1s 
+ ✔ Volume "mongodb-arch_shard1a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2a_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config1_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard3b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config2_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard2c_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_config3_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1b_data"  Created                                                                                                                             0.0s 
+ ✔ Volume "mongodb-arch_shard1c_data"  Created                                                                                                                             0.0s 
+ ✔ Container shard1c                   Started                                                                                                                             0.4s 
+ ✔ Container shard3c                   Started                                                                                                                             0.5s 
+ ✔ Container configsvr3                Started                                                                                                                             0.5s 
+ ✔ Container shard2a                   Started                                                                                                                             0.5s 
+ ✔ Container shard1a                   Started                                                                                                                             0.5s 
+ ✔ Container shard2c                   Started                                                                                                                             0.5s 
+ ✔ Container configsvr2                Started                                                                                                                             0.4s 
+ ✔ Container shard3a                   Started                                                                                                                             0.5s 
+ ✔ Container configsvr1                Started                                                                                                                             0.5s 
+ ✔ Container shard2b                   Started                                                                                                                             0.5s 
+ ✔ Container shard1b                   Started                                                                                                                             0.5s 
+ ✔ Container shard3b                   Started                                                                                                                             0.5s 
+ ✔ Container mongos2                   Started                                                                                                                             0.6s 
+ ✔ Container mongos1                   Started                                                                                                                             0.6s 
 Containers started. Waiting for them to be ready...
 Phase 2: Initializing replica sets...
 Starting MongoDB Sharded Cluster Initialization...
@@ -164,15 +287,32 @@ Initializing Shard 3 Replica Set...
 Waiting for replica sets to elect primaries...
 Replica Set Initialization Complete!
 ====================================
-Phase 3: Configuring cluster...
+Phase 3: Setting up admin account for cluster configuration ...
+Creating initial admin user...
+===============================
+{
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1755888312, i: 5 }),
+    signature: {
+      hash: Binary.createFromBase64('4DBVQ7YpgBTVRQETiMwPesllmhc=', 0),
+      keyId: Long('7541482441676947478')
+    }
+  },
+  operationTime: Timestamp({ t: 1755888312, i: 5 })
+}
+Admin user created successfully!
+Username: billing_superadmin
+Password: superadmin_password_123
+Phase 4: Configuring cluster...
 Starting MongoDB Cluster Configuration...
 =========================================
 Waiting for mongos to be ready...
 Adding shards to the cluster...
 ✓ Success: Adding shards to cluster
-Cluster status:
+Cluster status mongos1:
 shardingVersion
-{ _id: 1, clusterId: ObjectId('68a62dcafbd11cb96b4917c6') }
+{ _id: 1, clusterId: ObjectId('68a8ba53fb6395b56c328877') }
 ---
 shards
 [
@@ -180,19 +320,19 @@ shards
     _id: 'shard1RS',
     host: 'shard1RS/shard1a:27018,shard1b:27018,shard1c:27018',
     state: 1,
-    topologyTime: Timestamp({ t: 1755721293, i: 2 })
+    topologyTime: Timestamp({ t: 1755888403, i: 2 })
   },
   {
     _id: 'shard2RS',
     host: 'shard2RS/shard2a:27018,shard2b:27018,shard2c:27018',
     state: 1,
-    topologyTime: Timestamp({ t: 1755721293, i: 6 })
+    topologyTime: Timestamp({ t: 1755888403, i: 6 })
   },
   {
     _id: 'shard3RS',
     host: 'shard3RS/shard3a:27018,shard3b:27018,shard3c:27018',
     state: 1,
-    topologyTime: Timestamp({ t: 1755721293, i: 19 })
+    topologyTime: Timestamp({ t: 1755888403, i: 19 })
   }
 ]
 ---
@@ -208,6 +348,56 @@ balancer
   'Currently running': 'no',
   'Failed balancer rounds in last 5 attempts': 0,
   'Migration Results for the last 24 hours': 'No recent migrations'
+}
+---
+shardedDataDistribution
+[]
+---
+databases
+[
+  {
+    database: { _id: 'config', primary: 'config', partitioned: true },
+    collections: {}
+  }
+]
+Cluster status mongos2:
+shardingVersion
+{ _id: 1, clusterId: ObjectId('68a8ba53fb6395b56c328877') }
+---
+shards
+[
+  {
+    _id: 'shard1RS',
+    host: 'shard1RS/shard1a:27018,shard1b:27018,shard1c:27018',
+    state: 1,
+    topologyTime: Timestamp({ t: 1755888403, i: 2 })
+  },
+  {
+    _id: 'shard2RS',
+    host: 'shard2RS/shard2a:27018,shard2b:27018,shard2c:27018',
+    state: 1,
+    topologyTime: Timestamp({ t: 1755888403, i: 6 })
+  },
+  {
+    _id: 'shard3RS',
+    host: 'shard3RS/shard3a:27018,shard3b:27018,shard3c:27018',
+    state: 1,
+    topologyTime: Timestamp({ t: 1755888403, i: 19 })
+  }
+]
+---
+active mongoses
+[ { '7.0.23': 2 } ]
+---
+autosplit
+{ 'Currently enabled': 'yes' }
+---
+balancer
+{
+  'Currently enabled': 'yes',
+  'Failed balancer rounds in last 5 attempts': 0,
+  'Migration Results for the last 24 hours': 'No recent migrations',
+  'Currently running': 'no'
 }
 ---
 shardedDataDistribution
@@ -313,6 +503,12 @@ docker-compose up -d
 docker-compose logs [service_name]
 ```
 
+**Bring down the cluster:**
+```bash
+docker-compose down -v
+```
+
+
 ### Troubleshooting
 
 If containers fail to start, check logs:
@@ -341,4 +537,38 @@ Download this tool from this URL: https://www.mongodb.com/products/tools/compass
 
 and once installed
 Configure this MongoDB database like this in MongoDB Compass:
-![Demo](MongoDB-arch/Screenshot%202025-08-20%20at%205.15.28 PM.png)
+![Demo](MongoDB-arch/Screenshot%202025-08-22%20at%2011.48.36 AM.png)
+
+
+### To configure the MongoDB schema
+search for configure-billing-db-schema.sh in the MongoDB-data directory as your create_billing_collections.js file.
+
+Make the script executable:
+
+```bash
+chmod +x configure-billing-db-schema.sh
+```
+
+Run the script:
+
+```bash
+./configure-billing-db-schema.sh
+```
+
+### To configure the MongoDB role based access control (RBAC)
+search for load-rbac.sh in the MongoDB-RBAC directory as your role based file setup-rbac.js file.
+
+Make the script executable:
+
+```bash
+chmod +x load-rbac.sh
+```
+
+Run the script:
+
+```bash
+./load-rbac.sh
+```
+
+To see all the configured roles, login to MongoDB compass and execute this command
+![RBAC](MongoDB-RBAC/Screenshot%202025-08-22%20at%2011.51.19 AM.png)
