@@ -572,3 +572,19 @@ Run the script:
 
 To see all the configured roles, login to MongoDB compass and execute this command
 ![RBAC](MongoDB-RBAC/Screenshot%202025-08-22%20at%2011.51.19 AM.png)
+
+### To configure the MongoDB indexes
+search for load-indexes.sh in the MongoDB-indexes directory as your mongoDB-index.js file.
+
+Make the script executable:
+
+```bash
+chmod +x load-indexes.sh
+```
+
+Run the script:
+
+```bash
+./load-indexes.sh
+```
+
