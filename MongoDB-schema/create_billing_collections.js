@@ -123,7 +123,7 @@ dbBilling.createCollection("invoices", {
         },
         status: { enum: ["pending", "paid", "overdue"] },
         dueDate: { bsonType: "date" },
-        totalAmount: {bsonType: "int" },
+        totalAmount: {bsonType: "double" },
         createdAt: { bsonType: "date" },
         updatedAt: { bsonType: "date" }
       }
@@ -143,6 +143,7 @@ dbBilling.invoices.insertOne({
   ],
   status: "pending",
   dueDate: new Date("2025-09-01"),
+  totalAmount: 59.99,
   createdAt: new Date(),
   updatedAt: new Date()
 });

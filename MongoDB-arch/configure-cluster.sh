@@ -34,6 +34,3 @@ docker exec -it mongos1 mongosh --port 27017 --authenticationDatabase admin -u b
 # Verify cluster status with authentication
 echo "Cluster status mongos2:"
 docker exec -it mongos2 mongosh --port 27018 --authenticationDatabase admin -u billing_superadmin -p superadmin_password_123 --eval 'sh.status()'
-
-echo "Cluster Configuration Complete!"
-echo "==============================="

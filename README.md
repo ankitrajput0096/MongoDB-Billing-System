@@ -98,13 +98,77 @@ chmod +x configure-cluster.sh
 
 ---
 
+### To configure the MongoDB schema
+search for configure-billing-db-schema.sh in the MongoDB-schema directory as your create_billing_collections.js file.
+
+Make the script executable:
+
+```bash
+chmod +x configure-billing-db-schema.sh
+```
+
+Run the script:
+
+```bash
+./configure-billing-db-schema.sh
+```
+
+### To configure the MongoDB role based access control (RBAC)
+search for load-rbac.sh in the MongoDB-RBAC directory as your role based file setup-rbac.js file.
+
+Make the script executable:
+
+```bash
+chmod +x load-rbac.sh
+```
+
+Run the script:
+
+```bash
+./load-rbac.sh
+```
+
+To see all the configured roles, login to MongoDB compass and execute this command
+![RBAC](MongoDB-RBAC/Screenshot%202025-08-22%20at%2011.51.19 AM.png)
+
+### To configure the MongoDB indexes
+search for load-indexes.sh in the MongoDB-indexes directory as your mongoDB-index.js file.
+
+Make the script executable:
+
+```bash
+chmod +x load-indexes.sh
+```
+
+Run the script:
+
+```bash
+./load-indexes.sh
+```
+
+### To insert the MongoDB data 
+search for load-data.sh in the MongoDB-documents directory as your insert-mongoDB-documents.js file.
+
+Make the script executable:
+
+```bash
+chmod +x load-data.sh
+```
+
+Run the script:
+
+```bash
+./load-data.sh
+```
+
+
 ## Complete Setup Script
 
-### For a complete automated setup, create a master script that runs all phases:
+### For a complete automated setup, a master script that runs all phases:
 
 Create a file named `setup-cluster.sh` with the following content:
 
-[setup-cluster.sh](MongoDB-arch/setup-cluster.sh)
+[setup-cluster.sh](setup-cluster.sh)
 
 ### Make the script executable:
 
@@ -418,6 +482,7 @@ Connect to mongos at: localhost:27017
 =========================================
 ```
 
+
 ### Architecture Diagram of MongoDB
 
 ```
@@ -467,22 +532,6 @@ Connect to mongos at: localhost:27017
 │                                 │                                           │
 └─────────────────────────────────┴───────────────────────────────────────────┘
 ```
-
-### Connect to mongos:
-
-```bash
-mongosh --host localhost --port 27017
-```
-
-### Run cluster status check:
-
-```javascript
-sh.status()
-```
-
-You should see all three shards with `state: 1 (online)`
-
----
 
 ## Management Commands
 
@@ -538,53 +587,3 @@ Download this tool from this URL: https://www.mongodb.com/products/tools/compass
 and once installed
 Configure this MongoDB database like this in MongoDB Compass:
 ![Demo](MongoDB-arch/Screenshot%202025-08-22%20at%2011.48.36 AM.png)
-
-
-### To configure the MongoDB schema
-search for configure-billing-db-schema.sh in the MongoDB-data directory as your create_billing_collections.js file.
-
-Make the script executable:
-
-```bash
-chmod +x configure-billing-db-schema.sh
-```
-
-Run the script:
-
-```bash
-./configure-billing-db-schema.sh
-```
-
-### To configure the MongoDB role based access control (RBAC)
-search for load-rbac.sh in the MongoDB-RBAC directory as your role based file setup-rbac.js file.
-
-Make the script executable:
-
-```bash
-chmod +x load-rbac.sh
-```
-
-Run the script:
-
-```bash
-./load-rbac.sh
-```
-
-To see all the configured roles, login to MongoDB compass and execute this command
-![RBAC](MongoDB-RBAC/Screenshot%202025-08-22%20at%2011.51.19 AM.png)
-
-### To configure the MongoDB indexes
-search for load-indexes.sh in the MongoDB-indexes directory as your mongoDB-index.js file.
-
-Make the script executable:
-
-```bash
-chmod +x load-indexes.sh
-```
-
-Run the script:
-
-```bash
-./load-indexes.sh
-```
-
