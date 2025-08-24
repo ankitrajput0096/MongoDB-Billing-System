@@ -275,6 +275,26 @@ Configure this MongoDB database like this in MongoDB Compass:
 
 ---
 
+## To execute sample queries
+### navigate to directory 'MongoDB-queries' and run the Generic mongoDB execution script:
+```bash
+cd MongoDB-queries
+```
+### Make the script executable:
+
+```bash
+chmod +x Generic_run_query.sh
+```
+
+### Run the configuration script as show below and pass the name of the query as a parameter:
+
+```bash
+./Generic_run_query.sh query_2
+```
+
+After executing the above command, the result will be present in the 'query_results' folder
+with name as '<query_name>_result.js'. Make sure the 'query_2.js' is present in the folder 'queries'.
+
 ## Management Commands
 
 ### Common Operations
