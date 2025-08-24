@@ -1,0 +1,1 @@
+db.subscriptions.deleteMany({ "status": "active" })

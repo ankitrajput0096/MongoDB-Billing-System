@@ -1,0 +1,1 @@
+db.transactions.deleteOne({ "user_id": db.users.findOne({ "email": "james.brown@example.com" })._id })
