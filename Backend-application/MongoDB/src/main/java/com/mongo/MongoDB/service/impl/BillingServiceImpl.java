@@ -8,11 +8,17 @@ import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.bson.Document;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.domain.Sort;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +27,8 @@ public class BillingServiceImpl implements BillingService {
     private final UserRepository userRepository;
     private final TransactionRepository transactionRepository;
     private final InvoiceRepository invoiceRepository;
-    private final SubscriptionRepository subscriptionRepository;
     private final AuditLogRepository auditLogRepository;
+    private final MongoTemplate mongoTemplate;
 
     @Override
     @Transactional
@@ -111,5 +117,68 @@ public class BillingServiceImpl implements BillingService {
         auditLogRepository.save(auditLog);
 
         return report;
+    }
+
+    @Override
+    public List<Map<String, Object>> getRevenueByGateway(Date startDate, Date endDate) {
+        // Create aggregation pipeline for revenue by gateway
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("timestamp").gte(startDate).lte(endDate)
+                        .and("status").is("completed")),
+                Aggregation.group("metadata.gateway")
+                        .sum("amount").as("totalRevenue")
+                        .count().as("transactionCount"),
+                Aggregation.project("totalRevenue", "transactionCount")
+                        .and("_id").as("gateway")
+                        .andExclude("_id"),
+                Aggregation.sort(Sort.Direction.DESC, "totalRevenue")
+        );
+
+        AggregationResults<Document> results = mongoTemplate.aggregate(
+                aggregation, "transactions", Document.class);
+
+        return results.getMappedResults().stream()
+                .map(this::documentToMap)
+                .toList();
+    }
+
+    @Override
+    public List<Map<String, Object>> getTopSpenders(Date startDate, Date endDate, int limit) {
+        // Create aggregation pipeline for top spenders
+        // Fixed: Using "user_id" instead of "userId" to match the field name in MongoDB
+        Aggregation aggregation = Aggregation.newAggregation(
+                Aggregation.match(Criteria.where("timestamp").gte(startDate).lte(endDate)
+                        .and("status").is("completed")),
+                Aggregation.group("user_id")  // Changed from "userId" to "user_id"
+                        .sum("amount").as("totalSpent")
+                        .count().as("transactionCount"),
+                Aggregation.lookup("users", "_id", "_id", "userDetails"),
+                Aggregation.unwind("userDetails", true),
+                Aggregation.project()
+                        .and("_id").as("userId")
+                        .and("userDetails.name").as("userName")
+                        .and("userDetails.email").as("userEmail")
+                        .and("totalSpent").as("totalSpent")
+                        .and("transactionCount").as("transactionCount")
+                        .andExclude("_id"),
+                Aggregation.sort(Sort.Direction.DESC, "totalSpent"),
+                Aggregation.limit(limit)
+        );
+
+        AggregationResults<Document> results = mongoTemplate.aggregate(
+                aggregation, "transactions", Document.class);
+
+        return results.getMappedResults().stream()
+                .map(this::documentToMap)
+                .collect(Collectors.toList());
+    }
+
+    // Helper method to convert Document to Map
+    private Map<String, Object> documentToMap(Document document) {
+        Map<String, Object> map = new HashMap<>();
+        for (String key : document.keySet()) {
+            map.put(key, document.get(key));
+        }
+        return map;
     }
 }

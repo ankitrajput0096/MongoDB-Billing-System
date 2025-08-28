@@ -4286,7 +4286,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "Content-Type",
@@ -4390,7 +4390,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "Content-Type",
@@ -4454,7 +4454,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "Content-Type",
@@ -4481,6 +4481,198 @@
 							"body": "{\n    \"timestamp\": \"2025-08-27T17:07:05.639075\",\n    \"status\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"totalSpent\": 0,\n        \"invoices\": [],\n        \"currentBalance\": 45.75,\n        \"transactions\": []\n    },\n    \"path\": \"/api/v1/billing/report/66c7a0000000000000000008\"\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/api/v1/billing/revenue-by-gateway?startDate=2024-01-01&endDate=2024-12-31",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/billing/revenue-by-gateway?startDate=2024-01-01&endDate=2024-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"billing",
+						"revenue-by-gateway"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2024-12-31"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/v1/billing/revenue-by-gateway?startDate=2024-01-01&endDate=2024-12-31\""
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/api/v1/billing/revenue-by-gateway?startDate=2024-01-01&endDate=2024-12-31",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/billing/revenue-by-gateway?startDate=2024-01-01&endDate=2024-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"billing",
+								"revenue-by-gateway"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2024-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2024-12-31"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Aug 2025 05:35:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-08-27T22:35:55.497642\",\n    \"status\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"totalRevenue\": 202.97,\n            \"transactionCount\": 3,\n            \"gateway\": \"Stripe\"\n        },\n        {\n            \"totalRevenue\": 79.99,\n            \"transactionCount\": 1,\n            \"gateway\": \"PayPal\"\n        },\n        {\n            \"totalRevenue\": 75.25,\n            \"transactionCount\": 1,\n            \"gateway\": \"Braintree\"\n        }\n    ],\n    \"path\": \"/api/v1/billing/revenue-by-gateway\"\n}"
+				}
+			]
+		},
+		{
+			"name": "http://localhost:8080/api/v1/billing/top-spenders?startDate=2024-01-01&endDate=2024-12-31&limit=5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/billing/top-spenders?startDate=2020-01-01&endDate=2025-12-31&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"billing",
+						"top-spenders"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-12-31"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/api/v1/billing/top-spenders?startDate=2024-01-01&endDate=2024-12-31&limit=5\""
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/api/v1/billing/top-spenders?startDate=2024-01-01&endDate=2024-12-31&limit=5",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/billing/top-spenders?startDate=2020-01-01&endDate=2025-12-31&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"billing",
+								"top-spenders"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2020-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-12-31"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 Aug 2025 05:46:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-08-27T22:46:02.420702\",\n    \"status\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"totalSpent\": 129.99,\n            \"userEmail\": \"emma.rodriguez@example.com\",\n            \"transactionCount\": 1,\n            \"userName\": \"Emma Rodriguez\",\n            \"userId\": {\n                \"timestamp\": 1724358656,\n                \"date\": \"2024-08-22T20:30:56.000+00:00\"\n            }\n        },\n        {\n            \"totalSpent\": 89.99,\n            \"userEmail\": \"henry.novak@example.com\",\n            \"transactionCount\": 1,\n            \"userName\": \"Henry Novak\",\n            \"userId\": {\n                \"timestamp\": 1724358656,\n                \"date\": \"2024-08-22T20:30:56.000+00:00\"\n            }\n        },\n        {\n            \"totalSpent\": 79.99,\n            \"userEmail\": \"olivia.garcia@example.com\",\n            \"transactionCount\": 1,\n            \"userName\": \"Olivia Garcia\",\n            \"userId\": {\n                \"timestamp\": 1724358656,\n                \"date\": \"2024-08-22T20:30:56.000+00:00\"\n            }\n        },\n        {\n            \"totalSpent\": 75.25,\n            \"userEmail\": \"david.kim@example.com\",\n            \"transactionCount\": 1,\n            \"userName\": \"David Kim\",\n            \"userId\": {\n                \"timestamp\": 1724358656,\n                \"date\": \"2024-08-22T20:30:56.000+00:00\"\n            }\n        },\n        {\n            \"totalSpent\": 49.99,\n            \"userEmail\": \"alice.johnson@example.com\",\n            \"transactionCount\": 1,\n            \"userName\": \"Alice Johnson\",\n            \"userId\": {\n                \"timestamp\": 1724358656,\n                \"date\": \"2024-08-22T20:30:56.000+00:00\"\n            }\n        }\n    ],\n    \"path\": \"/api/v1/billing/top-spenders\"\n}"
 				}
 			]
 		}
