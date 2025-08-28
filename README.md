@@ -295,6 +295,19 @@ chmod +x Generic_run_query.sh
 After executing the above command, the result will be present in the 'query_results' folder
 with name as '<query_name>_result.js'. Make sure the 'query_2.js' is present in the folder 'queries'.
 
+---
+
+### To test a simple spring boot application connected to MongoDB production database
+### Navigate to directory 'Backend-application'
+### Postman collections of spring boot application
+You will find postman collection of the simple spring boot application with name as 'MongoDB Production.postman_collection.json' \
+Can import in postman to test the simple spring boot application
+### Navigate to directory 'MongoDB'
+Then run the simple spring boot application, which will start at port 8080
+
+---
+
+
 ## Management Commands
 
 ### Common Operations
